@@ -1,5 +1,5 @@
 {
-  "name": "super_heroes_api",
+  "name": "Train",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -31,7 +31,6 @@
     "supertest": "^6.3.3"
   },
   "scripts": {
-    "test": "jest",
     "start": "nodemon ./src/main.ts",
     "sync": "ts-node ./src/syncDB.ts"
   },

@@ -1,12 +1,27 @@
 'use strict';
 
 import Train from '../models/train';
+import { Op } from 'sequelize';
 import { TrainType } from '../types/trainType';
 
-const getAll = () => {
+const getAll = (city: string) => {
   return Train.findAll({
+    where: {
+      [Op.or]: [
+        {
+          fromCity: {
+            [Op.like]: `%${city.toLocaleUpperCase()}%`
+          }
+        },
+        {
+          toCity: {
+            [Op.like]: `%${city.toLocaleUpperCase()}%`
+          }
+        }
+      ]
+    },
     order: [
-      ['id', 'ASC'],
+      ['id', 'DESC'],
     ],
   });
 };

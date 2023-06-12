@@ -5,7 +5,8 @@ import { Request, Response } from 'express';
 import { TrainType } from '../types/trainType';
 
 const getAllTrain = async(req: Request, res: Response) => {
-  const trains = await TrainServices.getAll();
+  const { city = '' } = req.query;
+  const trains = await TrainServices.getAll(city as string);
 
   res.send(trains);
 };
@@ -62,7 +63,7 @@ const addTrain = async(req: Request, res: Response) => {
     departureTime,
     arrivalTime,
     statusInTime = true,
-    price = 500,
+    price = 10,
     freePlaces = 100,
   } = body;
 
@@ -73,9 +74,9 @@ const addTrain = async(req: Request, res: Response) => {
   }
 
   const newTrain: TrainType = {
-    trainName,
-    fromCity,
-    toCity,
+    trainName: trainName.toLocaleUpperCase(),
+    fromCity: fromCity.toLocaleUpperCase(),
+    toCity: toCity.toLocaleUpperCase(),
     departureTime,
     arrivalTime,
     statusInTime,
