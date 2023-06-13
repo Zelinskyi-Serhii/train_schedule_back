@@ -21,7 +21,7 @@ const getAll = (city: string) => {
       ]
     },
     order: [
-      ['id', 'DESC'],
+      ['departureTime', 'ASC'],
     ],
   });
 };
