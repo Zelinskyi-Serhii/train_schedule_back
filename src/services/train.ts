@@ -31,7 +31,7 @@ const getTrainById = (trainId: number) => {
 }
 
 const removeTrainById = (trainId: number) => {
-  Train.destroy({
+  return Train.destroy({
     where: {
       id: trainId,
     },
@@ -39,11 +39,11 @@ const removeTrainById = (trainId: number) => {
 };
 
 const createTrain = (body: TrainType) => {
-  Train.create({ ...body })
+  return Train.create({ ...body })
 };
 
 const updateTrain = (body: Partial<TrainType>, trainId: number) => {
-  Train.update({...body}, {
+  return Train.update({...body}, {
     where: {
       id: trainId,
     },
